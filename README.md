@@ -14,6 +14,8 @@ Você deve guardar os dados de todas as notas processadas na nossa base de dados
 
 Para mais informaçõe sobre os endpoints, veja o arquivo API.md.
 
+> IMPORTANTE: O escopo deste teste é totalmente fictício e não iremos utilizar o seu código para economizar o nosso trabalho.
+
 ## Fique atento
 
 ### Você deve ter em mente as seguintes restrições
