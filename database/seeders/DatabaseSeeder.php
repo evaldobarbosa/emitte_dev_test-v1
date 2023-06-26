@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,12 +21,12 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('emitte2023'),
         ]);
 
-        \DB::table('empresas')->insert([
+        DB::table('empresas')->insert([
             'razao_social' => 'Emitte',
             'cnpj' => '11111111000101',
         ]);
 
-        \DB::table('empresa_usuarios')->insert([
+        DB::table('empresa_usuarios')->insert([
             'user_id' => '1',
             'empresa_id' => '1',
         ]);

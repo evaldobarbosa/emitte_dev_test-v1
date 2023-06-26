@@ -31,13 +31,13 @@ Você tem o prazo de 2 dias para implementar essa funcionalidade. Quando termina
 
 Você deve fazer um fork deste repositório, baixá-lo na sua máquina e rodar na sua máquina a sequência de comandos:
 
-### Se você tem docker na sua máquina
+### Se você tem docker na sua máquina (Com alterações)
 
 ```
-docker-compose up -d
-docker-compose exec php_teste_emitte composer install
-docker-compose exec php_teste_emitte php artisan key:generate
-docker-compose exec php_teste_emitte composer renew
+docker-compose up -d --build
+docker-compose exec api composer install
+docker-compose exec api php artisan key:generate
+docker-compose exec api composer renew
 ```
 
 ### Se você ainda não usa docker
