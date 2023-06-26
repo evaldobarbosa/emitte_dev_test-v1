@@ -23,4 +23,4 @@ O error de chave estrangeira foi resolvido também.
 O serviço db não estava salvando os dados quando eram gerados pelo Eloquent do laravel ao rodar as migrations. Fiz uma alteração criando um valume no serviço db , onde salva os dados em um directorio chamado pgdata na raiz do user. Foi criado mais um serviço, Adminer para poder checar os dados do banco.
 
 ## 7° Mudança-> Tratamento dos dados enviado: Arquivo CSV processado.
-Criei um formulario no arquivo home.blade, onde o usuario pode selecionar o arquivo na sua maquina e enviar o arquivo para ser processado. O arquivo depois de processado é adicionado a uma variavel em forma de array de string.
+Criei um formulario no arquivo home.blade, onde o usuario pode selecionar o arquivo na sua maquina e enviar o arquivo para ser processado. O arquivo depois de processado é adicionado a uma variavel em forma de array de string. Esse array se chama $dadosProcessados e esta no controller CSVController. 
