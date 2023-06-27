@@ -23,3 +23,6 @@ e ultilizar.
 Usaria um padrão para nomeação dos atributos, class, controllers, migrations.
 Tem muito codigo em português e ingles. Um padrão interessante seria nomear tudo em ingles e
 no segular.
+
+## 7° Melhoria:
+Faria tudo em uma branch separada da main.
