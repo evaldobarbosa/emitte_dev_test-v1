@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class TipoNF extends Controller
 {
@@ -21,13 +22,13 @@ class TipoNF extends Controller
         ]);
 
         if ($tipo !== 'nfe') {
-            \Log::error(sprintf("Tipo de nota '%s' indisponível no momento", $tipo));
+            Log::error(sprintf("Tipo de nota '%s' indisponível no momento", $tipo));
             return response()->json([
                 'error' => sprintf("Tipo de nota '%s' indisponível no momento", $tipo)
             ], 500);
         }
 
-        \Log::info(
+        Log::info(
             sprintf(
                 'Nota fiscal %s com %s itens processada',
                 $request->get('numero'),

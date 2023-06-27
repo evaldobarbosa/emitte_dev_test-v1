@@ -6,7 +6,7 @@ services:
     restart: unless-stopped
     # comment next block if you are not using reverse proxy on local
     ports:
-      - 8090:8080
+      - "8090:8080"
     volumes:
       - .:/var/www/app
     environment:
@@ -22,6 +22,7 @@ services:
       - DB_DATABASE=emitte
       - DB_USERNAME=emitte
       - DB_PASSWORD=emitte
+    container_name: api
     depends_on:
       - db
     links:
@@ -31,18 +32,30 @@ services:
       emitte_net:
         aliases:
           - fake.geradornf.test
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    container_name: adminer
+    networks:
+      - emitte_net
   db:
     image: postgres:latest
     restart: unless-stopped
-    # volumes:
-      # - ./pgdata:/var/lib/postgresql/data
+    volumes:
+      - /pgdata:/var/lib/postgresql/data:rw
     environment:
       - POSTGRES_USER=emitte
       - POSTGRES_PASSWORD=emitte
       - POSTGRES_DB=emitte
       # - PGDATA=./pgdata
       - TZ=America/Fortaleza
-
+    ports:
+      - "5432:5432"
+    networks:
+      - emitte_net
+    container_name: db
   # queue:
   #   image: ambientum/php:8.0-nginx
   #   restart: unless-stopped
@@ -57,13 +70,12 @@ services:
   #     - web
   #   links:
   #     - db
-
   mailhog:  # MailHog - Fake SMTP server (optional).
     image: mailhog/mailhog:latest
     ports:
       - '1026:1025'  # Port 1025 => SMTP.
       - '8026:8025'  # Port 8025 => Web dashboard (http://127.0.0.1:8025).
-
+    container_name: mailhog 
 networks:
   emitte_net:
     driver: bridge

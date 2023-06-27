@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ResultadoProcessamento extends Controller
 {
@@ -19,7 +20,7 @@ class ResultadoProcessamento extends Controller
 
 
         foreach($request->get('notas_fiscais') as $nf) {
-            \Log::info(
+            Log::info(
                 sprintf(
                     'Nota fiscal %s com data atualizada',
                     $nf['numero']

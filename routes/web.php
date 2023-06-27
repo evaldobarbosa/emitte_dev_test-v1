@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TipoNF;
+use App\Http\Controllers\ResultadoProcessamento;
+use App\Http\Controllers\CSVController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,16 +18,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::post('/nfs/{tipo}', App\Http\Controllers\TipoNF::class)
+Route::post('/nfs/{tipo}', [TipoNF::class])
     ->name('processa_nf');
 
-Route::post('processamento/nfs', App\Http\Controllers\ResultadoProcessamento::class)
+Route::post('processamento/nfs', [ResultadoProcessamento::class])
     ->name('processadas');
+
+Route::post('/csv', [CSVController::class, 'processamento'])->name('processamento-csv');
